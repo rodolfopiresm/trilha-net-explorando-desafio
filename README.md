@@ -18,4 +18,50 @@ O seu programa deverá cálcular corretamente os valores dos métodos da classe 
 ![Diagrama de classe estacionamento](diagrama_classe_hotel.png)
 
 ## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+
+* Implementação para verificar se a capacidade da suite comporta a quantidade de hospedes. Caso a suiete não comporte a quantidade de hospedes retorna a exceção.
+
+```csharp
+        public void CadastrarHospedes(List<Pessoa> hospedes)
+        {
+            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
+            if (Suite.Capacidade >= hospedes.Count)
+            {
+                Hospedes = hospedes; 
+            }
+            else
+            {
+                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
+                throw new Exception("A quantidade de hóspedes não pode excede a capacidade da suíte.");
+            }
+        }
+```            
+
+* Retornar a quantidade de hospedes cadastrados.
+
+```csharp
+        public int ObterQuantidadeHospedes()
+        {
+            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
+            return Hospedes.Count;
+        }
+```
+
+* Implementado calculo para verificar se o hospede vai ficar por mais 10 ou mais dias, assim concedendo a ele um desconto de 10%.
+
+```csharp
+        public decimal CalcularValorDiaria()
+        {
+            // TODO: Retorna o valor da diária
+            // Cálculo: DiasReservados X Suite.ValorDiaria
+            decimal valor = DiasReservados * Suite.ValorDiaria;
+
+            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
+            if (DiasReservados >= 10)
+            {
+                valor *= 0.90m;
+            }
+
+            return valor;
+        }
+```
